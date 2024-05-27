@@ -12,9 +12,9 @@ Route::controller(CrudController::class)->group(function(){
     Route::post('/data/create','create')->name("create");
     Route::get('/data/getall','getall')->name("getall");
     Route::post('/data/getbyid','getbyid')->name("getbyid");
-    
     Route::put('/data/update','update')->name("update");
-    Route::delete('/data/delete','delete')->name("delete");
+
+    Route::delete('/data/delete/{id}','delete')->name("delete");
 });
 
 

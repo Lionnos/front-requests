@@ -59,12 +59,22 @@ class CrudController extends Controller
     }
 
     public function update (Request $request) {
-        $data = $request->json()->all();
-        return view ("ajax/view");
+        $data = $request->all();
+        return response()->json($data);
     }
 
-    public function delete (Request $request) {
-        $data = $request->json()->all();
-        return view ("ajax/view");
+    public function delete ($id) {
+        $data = "";
+        if ($id == 1 || $id == 2 || $id == 3 ) {
+            $data = [
+                'type' => "success",
+            ];
+        } else {
+            $data = [
+                'type' => "error",
+            ];
+        }
+
+        return response()->json($data);
     }
 }
