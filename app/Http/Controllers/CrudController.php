@@ -42,15 +42,13 @@ class CrudController extends Controller
             return $item['id'] == $id;
         });
 
-        $filteredData = array_values($filteredData);
-
         return response()->json($filteredData);
     }
 
     public function getall () {
 
         $data = [
-          'id' => 1,
+          'id' => 3,
           'name' => 'Lucas',
           'age' => 25,
           'email' => 'lucas@example.com'
@@ -63,7 +61,25 @@ class CrudController extends Controller
         return response()->json($data);
     }
 
-    public function delete ($id) {
+    public function delete (Request $request) {
+        $ids = $request->all();
+
+        $id = $ids['id'];
+
+        if ($id == 1 || $id == 2 || $id == 3 ) {
+            $data = [
+                'type' => "success",
+            ];
+        } else {
+            $data = [
+                'type' => "error",
+            ];
+        }
+
+        return response()->json($data);
+    }
+
+    public function deletebyid ($id) {
         $data = "";
         if ($id == 1 || $id == 2 || $id == 3 ) {
             $data = [
